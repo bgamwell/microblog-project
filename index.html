@@ -10,11 +10,14 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
 
+    <!-- Custom Google Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+
     <title>Clever Captions</title>
   </head>
   <body>
     <!-- Bootstrap navbar  -->
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-inverse">
       <div class="container-fluid">
 
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -26,7 +29,13 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="index.html">Clever Captions</a>
-        </div>
+            <form class="navbar-form navbar-left" role="search">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Username">
+              </div>
+              <button type="submit" class="btn btn-default">Log In!</button>
+            </form>
+          </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -41,10 +50,32 @@
     <!-- Page body, including images and comment areas -->
     <div class="container">
       <div class="row">
-        <div class="col-md-6">
-          <h1>testing testing testing</h1>
+        <div class="col-md-6 text-center">
+          <h1>Can you caption this image?</h1>
+          <center><img src="http://31.media.tumblr.com/tumblr_lnqlbfKpzf1qjbygko1_500.gif"></a><center>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 text-center">
+          <br></br>
+          <p>Add your own #clevercaption!</p>
+          <hr>
+          <!-- Form to enter captions -->
+        <form class="form-horizontal form-to-submit-new-caption">
+          <div class="form-group">
+            <label for="text-area" class="col-sm-2 control-label">Type!</label>
+            <div class="col-sm-10">
+              <textarea class="form-control" id="text-area" rows="3" placeholder="Enter text here" autofocus></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" class="btn btn-default">Submit!</button>
+            </div>
+          </div>
+        </form>
+          <hr>
+        </div>
+        <div class="row" id="row-templating-script-will-be-input-here">
+          <!-- Templating script will be fed into this div when rendered -->
         </div>
       </div>
     </div> <!-- .container div -->
@@ -62,6 +93,15 @@
 
     <!-- Custom Javascript -->
     <script src="script.js"></script>
+
+    <!-- Templating script for usernames -->
+
+    <!-- Templating script for captions -->
+    <script type="text/template" id="captions-suggestion-template">
+      <div class="captions-go-in-this-div">
+      <p><%= caption %></p>
+      </div>
+    </script>
 
   </body>
 </html>
