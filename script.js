@@ -10,7 +10,10 @@ $(function() {
 
   // Variables
 
-  var $allCaptions = []; // array to hold all captions
+  var $allCaptions = [
+    new Caption("This GIF is completely random."),
+    new Caption("Who posted this?!?")
+  ]; // array to hold all Captions
 
   var $navbarForm = $(".navbar-form");
 
@@ -23,12 +26,6 @@ $(function() {
 
   var $divToHoldCaptions = $("#row-templating-script-will-be-input-here");
 
-  // append existing captions (from seed data) to allCaptions
-  // `_.each` is an "iterator" function provided by Underscore.js
-  _.each($allCaptions, function (caption, index) {
-    caption.render();
-  });
-
   Caption.prototype.save = function() { //add save function to the Caption prototype
     // store our new todo
     $allCaptions.push(this);
@@ -38,11 +35,11 @@ $(function() {
   Caption.prototype.render = function () {
     // append our new todo to the page
    var $caption = $(template(this));
-  //  this.index = $allCaptions.indexOf(this);
-  //  $caption.attr('data-index', this.index);
+   this.index = $allCaptions.indexOf(this);
+   $caption.attr('data-index', this.index);
    $divToHoldCaptions.append($caption);
    console.log("Render works")
- };
+  };
 
   // Submit form
 
@@ -66,7 +63,14 @@ $(function() {
   // Reset the input form
   $captionForm[0].reset();
   $('#text-area').focus();
-});
+  });
+
+  // append existing captions (from seed data) to allCaptions
+  // `_.each` is an "iterator" function provided by Underscore.js
+  // all elemenets the each iterator uses must be defined aboeve the each iterator for it to work
+  _.each($allCaptions, function (caption, index) {
+    caption.render();
+  });
 
   // Push items into an array, then render them to the page from there
 
