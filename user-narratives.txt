@@ -1,0 +1,32 @@
+***About***
+
+"Clever Captions" is a one-page Web application that allows users to come up with a "clever" caption for a randomly-generated picture (this version will not incorporate randomly generated pictures, but will display a static picture which users can comment on). Others can comment on users' captions with suggestions and opinions--but oh no! It looks as if a troll has been set loose on the site!
+
+***User Stories***
+
+BOB loves funny websites. When he stumbles upon www.clevercaptions.com, he knows the website is perfect for him. It displays a large, completely random image on one side of the screen. He sees a form on the right that allows him to write in his own, witty caption ideas. (Functionality: leave caption suggestions, which are immediately rendered to the page)
+
+Although ANGELA loves funny websites and sharing her thoughts about all the wild things she sees online, she doesn't always like to comment using her real name. She notices that www.clevercaptions.com has a login form at the top of the page, but likes that she's not required to log in to suggest a caption or comment on another user's caption--she can do so anonymously. (Functionality: Log into the website)
+
+TOBY is a complete troll. He never comes up with his own ideas, but loves making fun of others'. When he comes across www.clevercaptions.com, he loves that he can make up a badass troll name and leave snarky comments in reply to others' caption suggestions. (Functionality: Leave comments on caption suggestions; the comments will also be immediately rendered to the page)
+
+***Necessary Functionality***
+
+A user should be able to "log into" the site. Their username will be grabbed from a login form and rendered on the page via a underscore templating.
+
+Users should be able to post caption ideas related to the displayed image. Their name will appear just above each comment that they leave.
+
+Other users should be able to comment on each caption idea.
+
+***Required Components***
+--Bootstrap
+--Login form
+--Nav Bar (to link to "about page")
+--Caption suggestion form
+--Comment form
+--jQuery
+--Underscore.js
+
+***Kanban Board***
+
+https://trello.com/b/zVTJpmJM/ga-wdi-project-0
