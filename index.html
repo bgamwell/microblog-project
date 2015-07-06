@@ -28,12 +28,6 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="index.html">Clever Captions</a>
-            <form class="navbar-form navbar-left" role="search">
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Username">
-              </div>
-              <button type="submit" class="btn btn-default">Log In!</button>
-            </form>
           </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -51,7 +45,7 @@
       <div class="row">
         <div class="col-md-6 text-center">
           <h1>Can you caption this image?</h1>
-          <center><img src="http://31.media.tumblr.com/tumblr_lnqlbfKpzf1qjbygko1_500.gif"></a><center>
+          <center><img src="http://31.media.tumblr.com/tumblr_lnqlbfKpzf1qjbygko1_500.gif" id="main-image" data-toggle="tooltip" title="This GIF is out of control, obviously."></center>
         </div>
         <div class="col-md-6 text-center">
           <br></br>
@@ -73,8 +67,12 @@
         </form>
           <hr>
         </div>
-        <div class="row" id="row-templating-script-will-be-input-here">
-          <!-- Templating script will be fed into this div when rendered -->
+        <div class="col-md-6">
+          <h1 class="text-center">There are currently <span id="counter">0</span> comments on this image!</h1>
+          <hr>
+          <div class="row" id="row-templating-script-will-be-input-here">
+            <!-- Templating script will be fed into this div when rendered -->
+          </div>
         </div>
       </div>
     </div> <!-- .container div -->
@@ -93,12 +91,25 @@
     <!-- Custom Javascript -->
     <script src="script.js"></script>
 
-    <!-- Templating script for usernames -->
+    <!-- Templating script for usernames tbd -->
 
     <!-- Templating script for captions -->
     <script type="text/template" id="captions-suggestion-template">
       <div class="captions-go-in-this-div">
-      <p><%= caption %></p>
+        <%=caption + " -posted anonymously"%>
+        <ul id="comments-list">
+          <%= comment %>
+        </ul>
+
+      <form class="form-inline add-a-comment">
+        <div class="form-group">
+          <input type="text" class="form-control" id="add-a-comment-text-area" placeholder="Add a Comment">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+
+      <!-- add a form and add each comment as an li under a ul for the moment -->
+
       </div>
     </script>
 

@@ -5,3 +5,8 @@ h1 {
 p {
   font-family: 'Poiret One', cursive;
 }
+
+#comment {
+  font-family: 'Poiret One', cursive;
+  font-size: 10px;
+}

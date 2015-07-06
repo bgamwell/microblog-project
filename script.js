@@ -1,19 +1,30 @@
 $(function() {
 
-  alert("Javascript is working!");
+  // Push all array items into the counter on the homepage
+
+  alert("Javascript is working!"); // Make sure javascript is working
 
   // Object constructor methods
 
-  function Caption(caption) {
+  function Caption(caption, comment) {
     this.caption = caption;
+    this.comment = []; // comments will be passed into this array
+  };
+
+  Caption.prototype.addComment = function(comment) {
+    this.push(comment);
   };
 
   // Variables
 
   var $allCaptions = [
     new Caption("This GIF is completely random."),
-    new Caption("Who posted this?!?")
   ]; // array to hold all Captions
+
+  function captionCount() {
+    var $counter = $("#counter");
+    $counter.text($allCaptions.length);
+  };
 
   var $navbarForm = $(".navbar-form");
 
@@ -39,6 +50,7 @@ $(function() {
    $caption.attr('data-index', this.index);
    $divToHoldCaptions.append($caption);
    console.log("Render works")
+   captionCount();
   };
 
   // Submit form
@@ -72,23 +84,55 @@ $(function() {
     caption.render();
   });
 
-  // Push items into an array, then render them to the page from there
 
-  // _.each(pets, function (pet, index) {
-  // var $pet = $(petsTemplate(pet));
-  // $pet.attr('data-index', index);
-  // $petsList.append($pet);
-  // });
 
-  //navbar form will render user's name in the
 
-  // create user object
-  // create suggestion object
-  // create comment object
+  // append comments to an instance of Caption
 
-  // User has many suggestions
-  // Suggestions can have many comments
+  var $addACommentForm = $(".add-a-comment");
 
-  // Username should be rendered to the page
+  var $commentsList = $("#comments-list");
 
+  $addACommentForm.on('submit', function(event) {
+    event.preventDefault();
+
+    // push to parent comment comments array
+
+    var $newComment = $("#add-a-comment-text-area").val();
+
+        // store our new todo
+    this.addComment($newComment); //"this.addComment is not a function"
+
+    // reset the form
+    $addACommentForm.reset();
+    $('#add-a-comment').focus();
+  });
+
+
+
+
+
+  // Persistence w/ localStorage
+  function Storage(key, initialValue) {
+    this._key = key;
+    this.save(initialValue);
+  }
+
+  Storage.prototype.save = function save(value) {
+    localStorage.setItem(this._key, JSON.stringify(value));
+  };
+
+  Storage.prototype.get = function get() {
+    return JSON.parse(localStorage.getItem(this._key));
+  };
+
+  var captionsCollection = $allCaptions.map(function(caption) {
+    return caption.caption;
+  });
+
+  appStorage = new Storage('captionApp', captionsCollection);
+  console.log(appStorage.get());
+
+  // // Tooltip
+  // $('#main-image').tooltip('Show');
 });
